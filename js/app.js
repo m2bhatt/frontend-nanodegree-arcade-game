@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var speed = Math.random();
 var x_pos = 100;
 var y_pos = 200;
@@ -18,29 +17,16 @@ var Enemy = function() {
     // this.height = 80;
     // this.width = 100;
     // var obj = Object.create(Enemy.prototype);
-=======
-// Enemies our player must avoid
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
->>>>>>> dd3a7509d9b3b59fb475ae6a8194e0b646f43ee4
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-<<<<<<< HEAD
     this.x += this.speed * dt;
     if (this.x > 500){
       this.x = 0;
     }
     return;
-=======
->>>>>>> dd3a7509d9b3b59fb475ae6a8194e0b646f43ee4
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -49,7 +35,6 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-<<<<<<< HEAD
 }
 
 Enemy.prototype.getspeed = function(){
@@ -57,15 +42,11 @@ Enemy.prototype.getspeed = function(){
   var numtwo = speed + 100;
   return Math.floor(Math.random() * (numone - numtwo + 1)) + numtwo;
 }
-=======
-};
->>>>>>> dd3a7509d9b3b59fb475ae6a8194e0b646f43ee4
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 
-<<<<<<< HEAD
 var Player = function(x, y, speed) {
   this.sprite = 'images/char-pink-girl.png';
   this.x = 200;
@@ -105,14 +86,11 @@ Player.prototype.handleInput = function(e){
       break;
   }
 };
-=======
->>>>>>> dd3a7509d9b3b59fb475ae6a8194e0b646f43ee4
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-<<<<<<< HEAD
 var enemyone = new Enemy(50, speed * (500-100) + 100);
 var enemytwo = new Enemy(100, speed * (500-100) + 100);
 var enemythree = new Enemy(200, speed * (500-100) + 100);
@@ -126,8 +104,6 @@ Player.prototype.reset = function() {
   this.x = 200;
   this.y = 400;
 };
-=======
->>>>>>> dd3a7509d9b3b59fb475ae6a8194e0b646f43ee4
 
 
 // This listens for key presses and sends the keys to your
