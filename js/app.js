@@ -1,13 +1,11 @@
 var speed = Math.random();
-var x_pos = 100;
-var y_pos = 200;
 
 // Enemies our player must avoid
 var Enemy = function() {
   this.sprite = 'images/enemy-bug.png';
-  this.x = 100 * speed;
+  this.x = speed;
   this.y = 200 * speed;
-  this.speed = speed * 400;
+//  this.speed = speed * 400;
   this.speed = this.getspeed();
   return this;
     // Variables applied to each of our instances go here,
@@ -22,7 +20,7 @@ var Enemy = function() {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    this.x += this.speed * dt;
+   this.x += this.speed * dt;
     if (this.x > 500){
       this.x = 0;
     }
@@ -66,8 +64,8 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(e){
   switch (e) {
-    case 'up': if (this.y - 10 > 0) {
-        this.y -= 82;
+    case 'up': if (this.y - 10 > 10) {
+        this.y = this.y - 82;
         }
         break;
     case 'down': if (this.y + 10 < 400){
@@ -90,13 +88,19 @@ Player.prototype.handleInput = function(e){
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+/*
+var enemyone = new Enemy(400, 200, 10);
+var enemytwo = new Enemy(200, 140, 70);
+var enemythree = new Enemy(100, 60, 40);
+var allEnemies = [enemyone, enemytwo, enemythree];
+allEnemies.push;
+*/
 
-var enemyone = new Enemy(50, speed * (500-100) + 100);
+var enemyone = new Enemy(50, this.getspeed);
 var enemytwo = new Enemy(100, speed * (500-100) + 100);
 var enemythree = new Enemy(200, speed * (500-100) + 100);
 var allEnemies = [enemyone, enemytwo, enemythree];
 allEnemies.push;
-
 
 var player = new Player();
 
