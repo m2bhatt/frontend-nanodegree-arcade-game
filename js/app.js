@@ -12,20 +12,19 @@ var Enemy = function(x, y, pace) {
     // a helper we've provided to easily load images
     // this.height = 80;
     // this.width = 100;
-    // var obj = Object.create(Enemy.prototype);
+  var obj = Object.create(Enemy.prototype);
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+  // You should multiply any movement by the dt parameter
+  // which will ensure the game runs at the same speed for
+  // all computers.
    this.x += this.speed * dt;
     if (this.x > 500){
       this.x = 0;
     }
-    return;
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
 };
 
 // Draw the enemy on the screen, required method for game
@@ -51,7 +50,7 @@ var Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
-  if (player.y === enemythree.y){
+  if (player.y === enemyone.y || player.y === enemytwo.y || player.y === enemythree.y){
     player.reset();
   };
 };
@@ -71,13 +70,13 @@ Player.prototype.handleInput = function(e){
         }
         break;
     case 'left':
-      if (this.x - 10 > 10) {
-        this.x = this.x - 97;
+      if (this.x > 10) {
+        this.x -= 97;
         }
       break;
     case 'right':
-      if (this.x + 10 < 400){
-        this.x = this.x + 97;
+      if (this.x < 350){
+        this.x += 97;
       }
       break;
   }
