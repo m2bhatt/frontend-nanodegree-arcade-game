@@ -1,15 +1,13 @@
 var speed = Math.random();
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y, pace) {
   this.sprite = 'images/enemy-bug.png';
   this.x = speed;
   this.y = 200 * speed;
-//  this.speed = speed * 400;
   this.speed = this.getspeed();
   return this;
     // Variables applied to each of our instances go here,
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     // this.height = 80;
@@ -45,10 +43,10 @@ Enemy.prototype.getspeed = function(){
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function(x, y, speed) {
+var Player = function(x, y) {
   this.sprite = 'images/char-pink-girl.png';
   this.x = 200;
-  this.y = 400;
+  this.y = 413;
   var obj = Object.create(Player.prototype);
 };
 
@@ -64,11 +62,11 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(e){
   switch (e) {
-    case 'up': if (this.y - 10 > 10) {
-        this.y = this.y - 82;
+    case 'up': if (this.y > 10) {
+        this.y -= 85;
         }
         break;
-    case 'down': if (this.y + 10 < 400){
+    case 'down': if (this.y < 400){
         this.y += 85;
         }
         break;
@@ -88,17 +86,9 @@ Player.prototype.handleInput = function(e){
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-/*
-var enemyone = new Enemy(400, 200, 10);
-var enemytwo = new Enemy(200, 140, 70);
-var enemythree = new Enemy(100, 60, 40);
-var allEnemies = [enemyone, enemytwo, enemythree];
-allEnemies.push;
-*/
-
-var enemyone = new Enemy(50, this.getspeed);
-var enemytwo = new Enemy(100, speed * (500-100) + 100);
-var enemythree = new Enemy(200, speed * (500-100) + 100);
+var enemyone = new Enemy(0, 50, speed * 100);
+var enemytwo = new Enemy(0, 100, speed * 200);
+var enemythree = new Enemy(0, 100, speed * 50);
 var allEnemies = [enemyone, enemytwo, enemythree];
 allEnemies.push;
 
