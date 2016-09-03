@@ -50,7 +50,9 @@ var Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
-  if (player.y === enemyone.y || player.y === enemytwo.y || player.y === enemythree.y){
+  if (player.y === enemyone.y && player.x === enemyone.x
+    || player.y === enemytwo.y && player.x === enemtwo.x
+    || player.y === enemythree.y && player.x === enemythree.x){
     player.reset();
   };
 };
@@ -95,7 +97,7 @@ var player = new Player();
 
 Player.prototype.reset = function() {
   this.x = 200;
-  this.y = 400;
+  this.y = 413;
 };
 
 
