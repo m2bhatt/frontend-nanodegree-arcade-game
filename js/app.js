@@ -1,10 +1,14 @@
 var speed = Math.random();
+var xTileSize = 101;
+var yTileSize = 83;
+var xBound = 505;
+var yBound = 415;
 
 // Enemies our player must avoid
-var Enemy = function(x, y, pace) {
+var Enemy = function(x, y) {
   this.sprite = 'images/enemy-bug.png';
-  this.x = speed;
-  this.y = 200 * speed;
+  this.x = 0;
+  this.y = Math.floor(Math.random() * 404);
   this.speed = this.getspeed();
   return this;
     // Variables applied to each of our instances go here,
@@ -45,7 +49,7 @@ Enemy.prototype.getspeed = function(){
 var Player = function(x, y) {
   this.sprite = 'images/char-pink-girl.png';
   this.x = 200;
-  this.y = 413;
+  this.y = 325;
   var obj = Object.create(Player.prototype);
 };
 
@@ -63,22 +67,23 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(e){
   switch (e) {
-    case 'up': if (this.y > 10) {
-        this.y -= 85;
+    case 'up':
+      if ((this.y > 0) && (this.y < (yBound - yTileSize))) {
+        this.y -= yTileSize;
         }
         break;
-    case 'down': if (this.y < 400){
-        this.y += 85;
+    case 'down': if ((this.y < 400) && (this.y < (yBound - yTileSize))){
+        this.y += yTileSize;
         }
         break;
     case 'left':
-      if (this.x > 10) {
-        this.x -= 97;
+      if ((this.x > 0) && (this.x < (xBound - xTileSize))) {
+        this.x -= xTileSize;
         }
       break;
     case 'right':
-      if (this.x < 350){
-        this.x += 97;
+      if ((this.x < 400) && (this.x < (xBound - xTileSize))){
+        this.x += xTileSize;
       }
       break;
   }
