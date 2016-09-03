@@ -8,7 +8,7 @@ var yBound = 415;
 var Enemy = function(x, y) {
   this.sprite = 'images/enemy-bug.png';
   this.x = 0;
-  this.y = Math.floor(Math.random() * 404);
+  this.y = (Math.floor(Math.random() * 3) + 1) * yTileSize - (yTileSize / 2)
   this.speed = this.getspeed();
   return this;
     // Variables applied to each of our instances go here,
@@ -48,14 +48,14 @@ Enemy.prototype.getspeed = function(){
 
 var Player = function(x, y) {
   this.sprite = 'images/char-pink-girl.png';
-  this.x = 200;
-  this.y = 325;
+  this.x = xTileSize * 2;
+  this.y = yTileSize * 4.5;
   var obj = Object.create(Player.prototype);
 };
 
 Player.prototype.update = function() {
   if (player.y === enemyone.y && player.x === enemyone.x
-    || player.y === enemytwo.y && player.x === enemtwo.x
+    || player.y === enemytwo.y && player.x === enemytwo.x
     || player.y === enemythree.y && player.x === enemythree.x){
     player.reset();
   };
@@ -68,21 +68,21 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(e){
   switch (e) {
     case 'up':
-      if ((this.y > 0) && (this.y < (yBound - yTileSize))) {
+      if (this.y > 0) {
         this.y -= yTileSize;
         }
         break;
-    case 'down': if ((this.y < 400) && (this.y < (yBound - yTileSize))){
+    case 'down': if (this.y < 4.5 * yTileSize){
         this.y += yTileSize;
         }
         break;
     case 'left':
-      if ((this.x > 0) && (this.x < (xBound - xTileSize))) {
+      if (this.x > 0) {
         this.x -= xTileSize;
         }
       break;
     case 'right':
-      if ((this.x < 400) && (this.x < (xBound - xTileSize))){
+      if (this.x < 3.5 * xTileSize){
         this.x += xTileSize;
       }
       break;
@@ -94,7 +94,7 @@ Player.prototype.handleInput = function(e){
 // Place the player object in a variable called player
 var enemyone = new Enemy(0, 50, speed * 100);
 var enemytwo = new Enemy(0, 100, speed * 200);
-var enemythree = new Enemy(0, 100, speed * 50);
+var enemythree = new Enemy(0, 200, speed * 50);
 var allEnemies = [enemyone, enemytwo, enemythree];
 allEnemies.push;
 
